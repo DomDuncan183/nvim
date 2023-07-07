@@ -27,13 +27,7 @@ lc.pyright.setup({})
 
 require('nvim-treesitter.configs').setup({
     ensure_installed = {
-        'c',
-        'cpp',
-        'rust',
-        'python',
         'lua',
-        'yaml',
-        'bash',
         'vim',
         'vimdoc',
         'query'
