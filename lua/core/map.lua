@@ -31,10 +31,10 @@ local map = {
     {'n', '<leader>sk', vim.cmd.close},
 
     -- move between windows
-    {{'n', 'i' }, '<M-h>', '<C-w>h'},
-    {{'n', 'i' }, '<M-j>', '<C-w>j'},
-    {{'n', 'i' }, '<M-k>', '<C-w>k'},
-    {{'n', 'i' }, '<M-l>', '<C-w>l'},
+    {{'n', 'i'}, '<M-h>', '<C-w>h'},
+    {{'n', 'i'}, '<M-j>', '<C-w>j'},
+    {{'n', 'i'}, '<M-k>', '<C-w>k'},
+    {{'n', 'i'}, '<M-l>', '<C-w>l'},
     {'t', '<M-h>', '<C-\\><C-N><C-w>h'},
     {'t', '<M-j>', '<C-\\><C-N><C-w>h'},
     {'t', '<M-k>', '<C-\\><C-N><C-w>h'},
