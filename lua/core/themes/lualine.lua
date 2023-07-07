@@ -5,7 +5,7 @@ local function harpoon()
     end
 
     local name = vim.fn.expand('%:t')
-    return string.format( '⇌  %d ┃ %s', idx, name)
+    return string.format('⇌  %d ┃ %s', idx, name)
 end
 
 require("lualine").setup {
