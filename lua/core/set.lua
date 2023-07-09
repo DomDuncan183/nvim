@@ -17,7 +17,7 @@ local options = {
     termguicolors = true,
     scrolloff = 8,
     signcolumn = 'yes',
-    colorcolumn = '80',
+    --colorcolumn = '80',
     updatetime = 100
 }
 
