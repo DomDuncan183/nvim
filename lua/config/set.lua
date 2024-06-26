@@ -14,6 +14,7 @@ vim.o.foldmethod = "indent"
 vim.o.foldlevelstart = 20
 vim.o.laststatus = 3
 vim.o.showcmd = false
+vim.o.cursorline = true
 
 -- vim.o.spell = true
 -- vim.o.textwidth = 100

@@ -31,11 +31,11 @@ return {
         event = "VeryLazy",
         opts = {},
     },
-    {
-        "rcarriga/nvim-notify",
-        lazy = true,
-        -- opts = {
-        --     timeout = 60,
-        -- },
-    },
+    -- {
+    --     "rcarriga/nvim-notify",
+    --     lazy = true,
+    --     -- opts = {
+    --     --     timeout = 60,
+    --     -- },
+    -- },
 }

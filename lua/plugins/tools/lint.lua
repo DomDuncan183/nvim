@@ -15,10 +15,18 @@ return {
             "--globals",
             "vim",
         }
+        -- lint.linters.shellcheck.args = {
+        --     "--exclude",
+        --     "SC3043",
+        --     "--format",
+        --     "json",
+        --     "-",
+        -- }
         lint.linters_by_ft = {
-            c = { "clangtidy" },
+            -- c = { "clangtidy" },
             python = { "pylint" },
-            bash = { "shellcheck" },
+            -- bash = { "shellcheck" },
+            -- sh = { "shellcheck" },
             javascript = { "eslint" },
             lua = { "luacheck" },
         }

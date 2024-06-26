@@ -6,7 +6,7 @@ return {
         {
             "<leader>fs",
             function()
-                require("conform").format({ async = true, lsp_fallback = true })
+                require("conform").format({ async = true, lsp_fallback = false })
             end,
         },
     },
@@ -14,18 +14,18 @@ return {
         formatters_by_ft = {
             lua = { "stylua" },
             python = { "isort", "black" },
-            c = { "clang_format" },
+            -- c = { "clang_format" },
             sh = { "shfmt" },
         },
 
-        format_on_save = { timeout_ms = 500, lsp_fallback = true },
+        -- format_on_save = { timeout_ms = 500, lsp_fallback = false },
         formatters = {
             stylua = {
                 prepend_args = { "--indent-type", "Spaces" },
             },
 
             clang_format = {
-                args = { "-style={IndentWidth: 4}" },
+                args = { "-style={IndentWidth: 4, ColumnLimit: 120}" },
             },
 
             shfmt = {

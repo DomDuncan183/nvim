@@ -2,6 +2,24 @@ return {
     "neovim/nvim-lspconfig",
 
     config = function()
+        vim.g["diagnostics_active"] = true
+        function Toggle_diagnostics()
+            if vim.g.diagnostics_active then
+                vim.g.diagnostics_active = false
+                vim.diagnostic.disable()
+            else
+                vim.g.diagnostics_active = true
+                vim.diagnostic.enable()
+            end
+        end
+
+        vim.keymap.set(
+            "n",
+            "<leader>tt",
+            Toggle_diagnostics,
+            { noremap = true, silent = true, desc = "Toggle vim diagnostics" }
+        )
+
         local lsp = require("lspconfig")
         lsp.lua_ls.setup({
             settings = {
@@ -17,7 +35,14 @@ return {
                 },
             },
         })
-        lsp.bashls.setup({})
+        lsp.bashls.setup({
+            settings = {
+                bashIde = {
+                    globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
+                    shellcheckArguments = "--exclude=SC3043",
+                },
+            },
+        })
         lsp.jdtls.setup({
             single_file_support = true,
             init_options = {},
