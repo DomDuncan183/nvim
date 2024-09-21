@@ -26,11 +26,11 @@ return {
         event = "VeryLazy",
         opts = {},
     },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {},
+    -- },
     -- {
     --     "rcarriga/nvim-notify",
     --     lazy = true,

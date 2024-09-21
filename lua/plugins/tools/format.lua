@@ -11,23 +11,21 @@ return {
         },
     },
     opts = {
+        -- format_on_save = { timeout_ms = 500, lsp_fallback = false },
         formatters_by_ft = {
+            c = { "clang_format" },
+            cpp = { "clang_format" },
+            sh = { "shfmt" },
             lua = { "stylua" },
             python = { "isort", "black" },
-            -- c = { "clang_format" },
-            sh = { "shfmt" },
         },
-
-        -- format_on_save = { timeout_ms = 500, lsp_fallback = false },
         formatters = {
-            stylua = {
-                prepend_args = { "--indent-type", "Spaces" },
-            },
-
             clang_format = {
-                args = { "-style={IndentWidth: 4, ColumnLimit: 120}" },
+                args = { "-style={IndentWidth: 4, ColumnLimit: 80}" },
             },
-
+            stylua = {
+                prepend_args = { "--indent-type", "Spaces", "--indent-width", "4"},
+            },
             shfmt = {
                 prepend_args = { "-i", "4" },
             },

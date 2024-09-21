@@ -1,74 +1,106 @@
+vim.g["diagnostics_active"] = true
+local function Toggle_diagnostics()
+    if vim.g.diagnostics_active then
+        vim.g.diagnostics_active = false
+        vim.diagnostic.disable()
+    else
+        vim.g.diagnostics_active = true
+        vim.diagnostic.enable()
+    end
+end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 return {
-    "neovim/nvim-lspconfig",
+    {
+        "williamboman/mason.nvim",
+        opts = {},
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
 
-    config = function()
-        vim.g["diagnostics_active"] = true
-        function Toggle_diagnostics()
-            if vim.g.diagnostics_active then
-                vim.g.diagnostics_active = false
-                vim.diagnostic.disable()
-            else
-                vim.g.diagnostics_active = true
-                vim.diagnostic.enable()
-            end
-        end
-
-        vim.keymap.set(
-            "n",
-            "<leader>tt",
-            Toggle_diagnostics,
-            { noremap = true, silent = true, desc = "Toggle vim diagnostics" }
-        )
-
-        local lsp = require("lspconfig")
-        lsp.lua_ls.setup({
-            settings = {
-                Lua = {
-                    runtime = {
-                        version = "LuaJIT",
-                    },
-                    diagnostics = {
-                        globals = {
-                            "vim",
+        opts = {
+            ensure_installed = {
+                "clangd",
+                "bashls",
+                "lua_ls",
+                "texlab",
+                "pyright",
+            },
+        },
+    },
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            servers = {
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            runtime = {
+                                version = "LuaJIT",
+                            },
+                            diagnostics = {
+                                globals = {
+                                    "vim",
+                                },
+                            },
                         },
                     },
+                    capabilities = capabilities,
+                },
+                bashls = {
+                    capabilities = capabilities,
+                },
+                pyright = {
+                    capabilities = capabilities,
+                },
+                texlab = {
+                    chktex = {
+                        onOpenAndSave = true,
+                        onEdit = true,
+                    },
+                    capabilities = capabilities,
+                },
+                clangd = {
+                    capabilities = capabilities,
                 },
             },
-        })
-        lsp.bashls.setup({
-            settings = {
-                bashIde = {
-                    globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
-                    shellcheckArguments = "--exclude=SC3043",
-                },
-            },
-        })
-        lsp.jdtls.setup({
-            single_file_support = true,
-            init_options = {},
-        })
-        lsp.tsserver.setup({})
-        lsp.clangd.setup({})
+        },
+        config = function(_, opts)
+            for server, settings in pairs(opts.servers) do
+                require("lspconfig")[server].setup(settings)
+            end
 
-        vim.keymap.set("n", "<space>ll", vim.diagnostic.open_float)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-        vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+            --stylua: ignore
+            vim.api.nvim_create_autocmd("LspAttach", {
+                group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+                callback = function(ev)
+                    local options = { buffer = ev.buf }
+                    local map = vim.keymap.set
 
-        vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-            callback = function(ev)
-                local opts = { buffer = ev.buf }
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-                vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-                vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            end,
-        })
-    end,
+                    map("n", "<leader>tt", Toggle_diagnostics,
+                        { noremap = true, silent = true, desc = "Toggle vim diagnostics" })
+
+                    map("n", "<space>ll", vim.diagnostic.open_float)
+                    map("n", "[d", vim.diagnostic.goto_prev)
+                    map("n", "]d", vim.diagnostic.goto_next)
+                    map("n", "<space>q", vim.diagnostic.setloclist)
+
+                    map("n", "gD", vim.lsp.buf.declaration, options)
+                    map("n", "gd", vim.lsp.buf.definition, options)
+                    map("n", "K", vim.lsp.buf.hover, options)
+                    map("n", "gi", vim.lsp.buf.implementation, options)
+                    map("n", "<C-k>", vim.lsp.buf.signature_help, options)
+                    map("n", "<space>D", vim.lsp.buf.type_definition, options)
+                    map("n", "<space>rn", vim.lsp.buf.rename, options)
+                    map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, options)
+                    map("n", "gr", vim.lsp.buf.references, options)
+                end,
+            })
+        end,
+    },
+    {
+        "nvimdev/lspsaga.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
 }

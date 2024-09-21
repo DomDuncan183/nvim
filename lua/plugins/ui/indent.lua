@@ -2,6 +2,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         event = "VeryLazy",
+        main = "ibl",
 
         opts = {
             indent = {
@@ -19,7 +20,6 @@ return {
                 },
             },
         },
-        main = "ibl",
     },
     {
         "echasnovski/mini.indentscope",

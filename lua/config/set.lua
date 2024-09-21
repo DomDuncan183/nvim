@@ -1,29 +1,43 @@
-vim.o.number = true
-vim.o.relativenumber = true
+local options = {
+    number = true,
+    relativenumber = true,
 
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.wrap = false
-vim.o.swapfile = false
+    softtabstop = 4,
+    shiftwidth = 4,
+    expandtab = true,
+    wrap = false,
+    swapfile = false,
 
-vim.o.scrolloff = 10
-vim.o.updatetime = 100
-vim.o.signcolumn = "yes"
-vim.o.foldmethod = "indent"
-vim.o.foldlevelstart = 20
-vim.o.laststatus = 3
-vim.o.showcmd = false
-vim.o.cursorline = true
+    scrolloff = 10,
+    updatetime = 100,
+    signcolumn = "yes",
+    foldmethod = "indent",
+    foldlevelstart = 20,
+    laststatus = 3,
+    showcmd = false,
+    cursorline = true,
+    conceallevel = 2,
+}
 
--- vim.o.spell = true
--- vim.o.textwidth = 100
--- vim.o.colorcolumn = '80'
+local globals = {
+    mapleader = " ",
+    skip_ts_context_commentstring_module = true,
+    loaded_netrw = 1,
+    loaded_netrwPlugin = 1,
+}
 
-vim.g.mapleader = " "
-vim.g.skip_ts_context_commentstring_module = true
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+for key, value in pairs(options) do
+    vim.opt[key] = value
+end
+
+for key, value in pairs(globals) do
+    vim.g[key] = value
+end
+
+
+--  vim.opt.spell = true
+--  vim.opt.textwidth = 100
+--  vim.opt.colorcolumn = '80'
 
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_altv = 1

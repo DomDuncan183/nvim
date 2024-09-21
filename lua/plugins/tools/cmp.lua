@@ -29,13 +29,13 @@ local cmp_icons = {
 return {
     {
         "L3MON4D3/LuaSnip",
-        lazy = true,
+        -- lazy = true,
         opts = {},
 
         --stylua: ignore
         keys = {
-            { "<M-p>", function() require("luasnip").jump(-1) end, mode = { "i", "s" }},
-            { "<M-n>", function() require("luasnip").jump(1) end, mode = { "i", "s" }},
+            { "<M-p>", function() require("luasnip").jump(-1) end, mode = { "i", "s", "v", "x"}},
+            { "<M-n>", function() require("luasnip").jump(1)  end, mode = { "i", "s", "v", "x"}},
         },
     },
     {

@@ -2,9 +2,10 @@ return {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
 
-    config = function()
-        require("illuminate").configure({
-            providers = { "lsp" },
-        })
+    opts = {
+        providers = {"lsp"}
+    },
+    config = function(_, opts)
+        require("illuminate").configure(opts)
     end,
 }
