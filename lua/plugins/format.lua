@@ -6,12 +6,11 @@ return {
         {
             "<leader>fs",
             function()
-                require("conform").format({ async = true, lsp_fallback = false })
+                require("conform").format({ async = true })
             end,
         },
     },
     opts = {
-        -- format_on_save = { timeout_ms = 500, lsp_fallback = false },
         formatters_by_ft = {
             c = { "clang_format" },
             cpp = { "clang_format" },
@@ -24,7 +23,7 @@ return {
                 args = { "-style={IndentWidth: 4, ColumnLimit: 80}" },
             },
             stylua = {
-                prepend_args = { "--indent-type", "Spaces", "--indent-width", "4"},
+                prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
             shfmt = {
                 prepend_args = { "-i", "4" },

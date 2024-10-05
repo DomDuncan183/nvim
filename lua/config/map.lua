@@ -1,6 +1,16 @@
 local map = vim.keymap.set
 
--- stylua: ignore
+map("n", "[b", vim.cmd.bprev)
+map("n", "]b", vim.cmd.bnext)
+
+map("i", "<C-;>", "<C-c>A;")
+map("n", "<C-;>", "A;<C-c>")
+map("i", "<C-c>", "<esc>")
+map("n", "Q", "<nop>")
+map("n", "<F1>", "<nop>")
+map("n", "q:", "<nop>")
+
+map("n", "-", vim.cmd.Oil)
 map("n", "<leader>lz", vim.cmd.Lazy)
 map("n", "<leader>zm", vim.cmd.ZenMode)
 map("n", "<leader>tw", vim.cmd.Twilight)

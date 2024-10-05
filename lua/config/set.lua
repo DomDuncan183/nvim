@@ -15,8 +15,10 @@ local options = {
     foldlevelstart = 20,
     laststatus = 3,
     showcmd = false,
-    cursorline = true,
+    -- cursorline = true,
     conceallevel = 2,
+    ignorecase = true,
+    autochdir = true,
 }
 
 local globals = {
@@ -33,7 +35,6 @@ end
 for key, value in pairs(globals) do
     vim.g[key] = value
 end
-
 
 --  vim.opt.spell = true
 --  vim.opt.textwidth = 100

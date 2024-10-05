@@ -43,7 +43,6 @@ return {
         dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp",
             "saadparwaiz1/cmp_luasnip",
         },
@@ -62,11 +61,6 @@ return {
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
-
-                -- window = {
-                --     completion = cmp.config.window.bordered(),
-                --     documentation = cmp.config.window.bordered(),
-                -- },
 
                 mapping = cmp.mapping.preset.insert({
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -95,24 +89,8 @@ return {
                         return vim_item
                     end,
                 },
-
                 experimental = { ghost_text = true },
             })
-
-            -- cmp.setup.cmdline({ "/", "?" }, {
-            --     mapping = cmp.mapping.preset.cmdline(),
-            --     sources = {
-            --         { name = "buffer", max_item_count = max_count },
-            --     },
-            -- })
-            --
-            -- cmp.setup.cmdline(":", {
-            --     mapping = cmp.mapping.preset.cmdline(),
-            --     sources = cmp.config.sources({
-            --         { name = "path", max_item_count = max_count },
-            --         { name = "cmdline", max_item_count = max_count },
-            --     }),
-            -- })
         end,
     },
 }

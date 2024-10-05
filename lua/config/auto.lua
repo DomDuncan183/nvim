@@ -5,6 +5,6 @@ vim.filetype.add({
 vim.api.nvim_create_autocmd("User", {
     desc = "Cleanup on exit",
     pattern = "VimtexEventQuit",
-    group = vim.api.nvim_create_augroup("VimTex", {clear = true}),
+    group = vim.api.nvim_create_augroup("VimTex", { clear = true }),
     command = "VimtexClean",
 })

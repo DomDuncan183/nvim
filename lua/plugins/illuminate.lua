@@ -3,7 +3,7 @@ return {
     event = "VeryLazy",
 
     opts = {
-        providers = {"lsp"}
+        providers = { "lsp" },
     },
     config = function(_, opts)
         require("illuminate").configure(opts)

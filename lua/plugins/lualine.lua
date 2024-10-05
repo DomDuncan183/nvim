@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
     event = "BufEnter",
 
     opts = {
@@ -9,6 +10,6 @@ return {
         },
         sections = {
             lualine_x = { "filetype" },
-        }
-    }
+        },
+    },
 }

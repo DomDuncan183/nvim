@@ -6,7 +6,7 @@ return {
         linters_by_ft = {
             python = { "pylint" },
             lua = { "luacheck" },
-            tex = { "chktex" },
+            -- tex = { "chktex" },
         },
         linters = {
             pylint = {
