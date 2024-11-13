@@ -22,6 +22,11 @@ return {
         opts = {},
     },
     {
+        "numToStr/Comment.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
+    {
         "folke/todo-comments.nvim",
         event = "VeryLazy",
         opts = {},
@@ -36,46 +41,46 @@ return {
         event = "VeryLazy",
         opts = {},
     },
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            views = {
-                cmdline_popup = {
-                    border = {
-                        style = "none",
-                    },
-                    position = {
-                        row = "99%",
-                        col = "0%",
-                    },
-                    size = {
-                        width = 30,
-                        height = "auto",
-                    },
-                    win_options = {
-                        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-                    },
-                },
-                search_popup = {
-                    border = {
-                        style = "none",
-                    },
-                    position = {
-                        row = "99%",
-                        col = "50%",
-                    },
-                    size = {
-                        width = 30,
-                        height = "auto",
-                    },
-                    win_options = {
-                        winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-                    },
-                },
-            },
-        },
-    },
+    -- {
+    --     "folke/noice.nvim",
+    --     event = "VeryLazy",
+    --     opts = {
+    --         views = {
+    --             cmdline_popup = {
+    --                 border = {
+    --                     style = "none",
+    --                 },
+    --                 position = {
+    --                     row = "99%",
+    --                     col = "0%",
+    --                 },
+    --                 size = {
+    --                     width = 60,
+    --                     height = "auto",
+    --                 },
+    --                 win_options = {
+    --                     winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+    --                 },
+    --             },
+    --             search_popup = {
+    --                 border = {
+    --                     style = "none",
+    --                 },
+    --                 position = {
+    --                     row = "99%",
+    --                     col = "50%",
+    --                 },
+    --                 size = {
+    --                     width = 60,
+    --                     height = "auto",
+    --                 },
+    --                 win_options = {
+    --                     winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+    --                 },
+    --             },
+    --         },
+    --     },
+    -- },
     {
         "rcarriga/nvim-notify",
         lazy = true,

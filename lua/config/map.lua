@@ -49,8 +49,8 @@ map("n", "<M-n>", vim.cmd.tabn)
 map("n", "<M-p>", vim.cmd.tabp)
 
 -- moves blocks with indentation
-map("v", "J", ":m '<+1<cr>gv=gv")
-map("v", "K", ":m '<-2<cr>gv=gv")
+-- map("v", "J", ":m '<+1<cr>gv=gv")
+-- map("v", "K", ":m '<-2<cr>gv=gv")
 
 -- puts cursor back
 map("n", "J", "mzJ`z")

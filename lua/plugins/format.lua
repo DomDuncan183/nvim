@@ -20,7 +20,7 @@ return {
         },
         formatters = {
             clang_format = {
-                args = { "-style={IndentWidth: 4, ColumnLimit: 80}" },
+                args = { "-style={IndentWidth: 4, ColumnLimit: 80, AccessModifierOffset: 0, IndentAccessModifiers: true}" },
             },
             stylua = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },

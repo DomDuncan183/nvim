@@ -1,4 +1,5 @@
 local cmp_icons = {
+    Supermaven = "",
     Text = "",
     Method = "󰆧",
     Function = "󰊕",
@@ -51,7 +52,7 @@ return {
         opts = function()
             local cmp = require("cmp")
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            local max_count = 10
+            local max_count = 20
 
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
             cmp.setup({
@@ -71,6 +72,7 @@ return {
                 }),
 
                 sources = cmp.config.sources({
+                    { name = "supermaven", max_item_count = max_count },
                     { name = "nvim_lsp", max_item_count = max_count },
                     { name = "luasnip", max_item_count = max_count },
                     { name = "path", max_item_count = max_count },
@@ -81,6 +83,7 @@ return {
                     format = function(entry, vim_item)
                         vim_item.kind = string.format("%s %s", cmp_icons[vim_item.kind], vim_item.kind)
                         vim_item.menu = ({
+                            supermaven = "[Supermaven]",
                             buffer = "[Buffer]",
                             nvim_lsp = "[LSP]",
                             luasnip = "[LuaSnip]",
